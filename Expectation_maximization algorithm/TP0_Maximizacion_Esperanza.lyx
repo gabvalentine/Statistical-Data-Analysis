@@ -1,0 +1,687 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{palatino}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swiss
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Trabajo práctico 0: Algoritmo de Maximización de la Esperanza
+\end_layout
+
+\begin_layout Author
+Ph.
+ D.
+ Saúl Calderón Ramírez 
+\begin_inset Newline newline
+\end_inset
+
+Instituto Tecnológico de Costa Rica, 
+\begin_inset Newline newline
+\end_inset
+
+Escuela de Computación
+\begin_inset Newline newline
+\end_inset
+
+PAttern Recongition and MAchine Learning Group (PARMA-Group)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Fecha de entrega:
+\series default
+ Lunes 25 de Setiembre.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Entrega
+\series default
+: Un archivo .zip con el código fuente LaTeX o Lyx, el pdf, y un jupyter
+ en Pytorch, debidamente documentado, con una función definida por ejercicio.
+ A través del TEC-digital.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Modo de trabajo
+\series default
+: Grupos de 3 personas.
+\end_layout
+
+\begin_layout Abstract
+En el presente trabajo práctico introduce al algoritmo de maximización de
+ esperanza, y su aplicación para la segmentacion de imagenes.
+\end_layout
+
+\begin_layout Section
+(100 puntos) Algoritmo de Maximización de la Esperanza con datos artificiales
+\end_layout
+
+\begin_layout Standard
+A continuación, implemente el algoritmo de maximización de la esperanza
+ (descrito en el material del curso), usando la definición y descripción
+ de las siguientes funciones como base:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+(15 puntos)
+\series default
+ Implemente la función 
+\emph on
+generate_data 
+\emph default
+la cual reciba la cantidad de observaciones unidimensionales total a generar
+ 
+\begin_inset Formula $N$
+\end_inset
+
+, y los parámetros correspondientes a 
+\begin_inset Formula $K=2$
+\end_inset
+
+ funciones de densidad Gaussianas.
+ Genere los datos siguiendo tales distribuciones, y retorne tal matriz de
+ datos 
+\begin_inset Formula $X\in\mathbb{R}^{N\times1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Grafique los datos usando un 
+\emph on
+scatter plot 
+\emph default
+junto con las gráficas de los histogramas de los datos y las funciones de
+ densidad de probabilidad Gaussianas usando los parámetros para inicializar
+ los datos, en la misma figura (gráfico).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+(5 puntos)
+\series default
+ Implemente la función 
+\emph on
+init_random_parameters 
+\emph default
+la cual genere una matriz de 
+\begin_inset Formula $P\in\mathbb{R}^{K\times2}$
+\end_inset
+
+ dimensiones, con los parámetros de las funciones de densidad Gaussiana
+ generados completamente al azar.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Muestre un pantallazo donde verifique su funcionamiento correcto con los
+ comentarios asociados.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+(20 puntos)
+\series default
+ Implemente la función 
+\emph on
+calculate_likelihood_gaussian_observation(x_n, mu_k, sigma_k) 
+\emph default
+la cual calcule la verosimilitud de una observación específica 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+, para una función de densidad Gaussiana con parámetros 
+\begin_inset Formula $\mu_{k}$
+\end_inset
+
+ y 
+\begin_inset Formula $\sigma_{k}$
+\end_inset
+
+.
+ Realice la correción pertinente al calculo de la función de verosimilitud
+ para evitar el problema de 
+\emph on
+under flow.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Diseñe y ejecute una prueba unitaria donde verifique su funcionamiento correcto
+ con los comentarios asociados.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+(10 puntos)
+\series default
+ Implemente la función 
+\emph on
+calculate_membership_dataset(X_dataset, Parameters_matrix), 
+\emph default
+la cual, usando la matriz de parámetros 
+\begin_inset Formula $P$
+\end_inset
+
+ y la función anteriormente implementada 
+\emph on
+calculate_likelihood_gaussian_observation, 
+\emph default
+defina por cada observación 
+\begin_inset Formula $x_{n}\in X$
+\end_inset
+
+ la pertenencia o membresía a cada cluster 
+\begin_inset Formula $k=1,\ldots K$
+\end_inset
+
+, en una matriz binaria 
+\begin_inset Formula $M\in\mathbb{R}^{N\times K}$
+\end_inset
+
+.
+ Retorne tal matriz de membresía 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Diseñe y ejecute una prueba unitaria donde verifique su funcionamiento correcto
+ con los comentarios asociados.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+(30 puntos)
+\series default
+ Implemente la función 
+\emph on
+recalculate_parameters(X_dataset, Membership_data), 
+\emph default
+la cual recalcule los parámetros de las funciones de densidad Gaussianas
+ representandas en la matriz
+\emph on
+ 
+\emph default
+
+\begin_inset Formula $P$
+\end_inset
+
+, de acuerdo a lo representado en la matriz de membresía 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Use las funciones 
+\emph on
+mean 
+\emph default
+y 
+\emph on
+std 
+\emph default
+de pytorch para ello.
+ Intente prescindir al máximo de estructuras de repetición tipo 
+\emph on
+for
+\emph default
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+(10 puntos)
+\series default
+ Ejecute 5 corridas diferentes del algoritmo, donde por cada una documente
+ los parámetros a los que se arribó.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Grafique las funciones de densidad de probabilidad a las que convergió el
+ algoritmo.
+ Puede graficar también las funciones de densidad obtenidas en 2 o 3 pasos
+ intermedios.
+ Presente una tabla de gráficas donde en cada entrada se identifique el
+ número de iteración y los parámetros iniciales.
+\end_layout
+
+\begin_layout Enumerate
+Comente los resultados.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+(10 puntos)
+\series default
+ Proponga una mejor heurística para inicializar los parámetros del modelo
+ aleatoriamente.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Compruebe la mejora obtenida con el método propuesto, corriendo las pruebas
+ del punto anterior.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+(30 puntos extra) Umbralización con el algoritmo de Maximización de la Esperenza
+\end_layout
+
+\begin_layout Standard
+En procesamiento de imágenes, un problema muy frecuente es la segmentación
+ binaria de una imagen, para detectar objetos de interés respecto a un fondo.
+ Este problema se pueden enfocar como el de clasificar cada valor de pixel
+ 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ de una imagen 
+\begin_inset Formula $U\in\mathbb{R}^{a\times b}$
+\end_inset
+
+ de 
+\begin_inset Formula $a$
+\end_inset
+
+ filas y 
+\begin_inset Formula $b$
+\end_inset
+
+ en dos categorias: fondo (
+\begin_inset Formula $t_{i}=0$
+\end_inset
+
+) y objeto de interés (
+\begin_inset Formula $t_{i}=1$
+\end_inset
+
+).
+ La Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Segmentación-binaria."
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ muestra un ejemplo de una segmentación binaria.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgs/segmentacion_binaria.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Segmentación binaria.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Segmentación-binaria."
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Un enfoque para clasificar los pixeles en dos clases, es crear una función
+ 
+\begin_inset Formula $\tilde{t}_{i}=f\left(z_{i}\right)$
+\end_inset
+
+, la cual tome la decisión de si 
+\begin_inset Formula $\tilde{t}_{i}=0$
+\end_inset
+
+ o si 
+\begin_inset Formula $\tilde{t}_{i}=1$
+\end_inset
+
+, a partir de un umbral óptimo 
+\begin_inset Formula $\tau$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+f\left(p_{i}\right)=\begin{cases}
+1 & \textrm{si \ensuremath{z_{i}}>\ensuremath{\tau}}\\
+0 & si\ensuremath{z_{i}}\leq\ensuremath{\tau}
+\end{cases}
+\]
+
+\end_inset
+
+Para calcular ese umbral óptimo, se puede usar el histograma del conjunto
+ de pixeles en la imagen 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ Observe por ejemplo la imagen de la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Histograma-de-una"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ El histograma 
+\begin_inset Formula $h_{U}$
+\end_inset
+
+ de tal imagen 
+\begin_inset Formula $U$
+\end_inset
+
+ es una aproximación a su función de densidad 
+\begin_inset Formula $\tilde{p}_{U}$
+\end_inset
+
+ .
+ A partir de ese histograma, se puede observar que una función mixta Gaussiana,
+ definida como la combinación lineal de dos funciones Gaussianas, puede
+ ser un modelo con un buen ajuste a tal histograma 
+\begin_inset Formula $h_{U}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p\left(z\mid\mu_{1},\mu_{2},\sigma_{1},\sigma_{2}\right)=P_{1}\mathcal{N}\left(z\mid\mu_{1},\sigma_{1}\right)+P_{2}\mathcal{N}\left(z\mid\mu_{2},\sigma_{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde 
+\begin_inset Formula $P_{1}+P_{2}=1$
+\end_inset
+
+ son los pesos relativos de cada 
+\begin_inset Quotes cld
+\end_inset
+
+campana Gaussiana
+\begin_inset Quotes crd
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgs/histograma.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Histograma de una imagen con un fondo y un objeto de interés.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Histograma-de-una"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Con un algoritmo como por ejemplo la Maximización de la Esperanza, es posible
+ estimar los parámetros 
+\begin_inset Formula $\mu_{1},\mu_{2},\sigma_{1},\sigma_{2}$
+\end_inset
+
+.
+ Por ello:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+(10 puntos)
+\series default
+ Para la imagen provista 
+\emph on
+cuadro1_005.bmp, 
+\emph default
+calcule su histograma y usando el algoritmo de Maximización de la Esperanza,
+ estime los parámetros 
+\begin_inset Formula $\mu_{1},\mu_{2},\sigma_{1},\sigma_{2}$
+\end_inset
+
+.
+ Hágalo para 3 corridas, y para cada una de ellas muestre el histograma
+ de la imagen 
+\begin_inset Formula $U$
+\end_inset
+
+ con la función de densidad estimada 
+\begin_inset Formula $p\left(z\mid\mu_{1},\mu_{2},\sigma_{1},\sigma_{2}\right)$
+\end_inset
+
+ superpuesta (en la misma gráfica).
+\end_layout
+
+\begin_layout Standard
+Note ahora que una vez estimado el modelo con mejor ajuste 
+\begin_inset Formula $p\left(z\mid\mu_{1},\mu_{2},\sigma_{1},\sigma_{2}\right)$
+\end_inset
+
+, es posible estimar el umbral óptimo 
+\begin_inset Formula $\tau$
+\end_inset
+
+, tomando en cuenta el 
+\begin_inset Quotes cld
+\end_inset
+
+valle
+\begin_inset Quotes crd
+\end_inset
+
+ entre ambas Gaussianas.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+(20 puntos)
+\series default
+ Diseñe e implemente un algoritmo sencillo, el cual, tomando en cuenta al
+ modelo 
+\begin_inset Formula $p\left(z\mid\mu_{1},\mu_{2},\sigma_{1},\sigma_{2}\right)$
+\end_inset
+
+, estime el o los umbrales óptimos 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+ Realice y documente las pruebas asociadas y aplique el umbral o los umbrales
+ óptimos obtenidos en la imagen de prueba.
+ Muestre y comente los resultados.
+ 
+\end_layout
+
+\end_body
+\end_document
